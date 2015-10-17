@@ -32,14 +32,13 @@ It also ensures that the log directory doesn't grow out of control.
 
 
 
+
+
+
 Command Line Usage
------------------------
-
-
-Command Line
 -------------------
 
-```bash
+```yaml
 logrotator -f logFile [-d logDir] [-m rotatedFileFormat] [-c] [-s maxSize] [-r rotateValue] [-v] [-n]
 ```
 
@@ -80,6 +79,44 @@ logrotator -f logFile [-d logDir] [-m rotatedFileFormat] [-c] [-s maxSize] [-r r
         
         
         
+Examples
+-----------------------
+        
+        
+```bash        
+# minimal (parameters are guessed by the logRotator script)
+> logrotator -f myapp.log
+
+# specifying the directory
+> logrotator -f myapp.log -d /path/to/myapp/logs
+
+# specifying the format of the rotated files 
+> logrotator -f myapp.log -d /path/to/myapp/logs -m {fileName}.{datetime}.{ext}
+
+# not using gz compression 
+> logrotator -f myapp.log -c
+
+# specifying the threshold size in bytes (if the log file's size exceed that threshold, it will be rotated) 
+> logrotator -f myapp.log -s 10000000
+
+# when the log file is rotated, keep only 30 logs max in the log dir 
+> logrotator -f myapp.log -r 30
+
+# when the log file is rotated, keep only rotated files that are less than 24 days old 
+> logrotator -f myapp.log -r 24d
+
+# show me more output 
+> logrotator -f myapp.log -v
+
+# I'm going to make some tests first, do not empty the log file when executing (dry mode) 
+> logrotator -f myapp.log -n
+
+# A crazy example with all options
+> logrotator -f myapp.log -d /path/to/myapp/logs -m {fileName}.{datetime}.txt -s 100000000 -r 50 -vnc
+```        
+        
+        
+        
 What does this script do exactly?
 ----------------------------
 
@@ -95,6 +132,9 @@ If the log file size exceed the threshold, then the rotation is performed.
 
 There is also an option to automatically remove oldest rotated file, either based on the number of rotated files in the log dir,
 or based on the rotated file mtime.
+
+
+
 
 
 
