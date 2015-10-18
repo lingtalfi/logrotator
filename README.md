@@ -144,3 +144,14 @@ Bonus
 
 Lightweight: about 200 lines of code only 
 
+
+
+
+Recommendation
+-------------------
+
+You also might be interested by the [log change notify script](https://github.com/lingtalfi/log-change-notify)
+
+
+
+
