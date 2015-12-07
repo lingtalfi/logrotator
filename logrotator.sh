@@ -73,7 +73,6 @@ logDir=""
 rotatedFileFormat='{fileName}.{datetime}.{extension}'
 useGz=1
 maxSize=1000000
-maxSize=10
 rotateValue='30'
 verbose=0  
 dry=0
